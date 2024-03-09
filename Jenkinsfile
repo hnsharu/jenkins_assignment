@@ -1,15 +1,14 @@
 pipeline {
-    agent any
-
-    environment{
-        PYTHONPATH='src'
+    agent{
+        dockerfile true
     }
 
     stages {
         stage('Build') {
             steps {
                 echo 'building'
-                bat  'pip install -r requirements.txt'
+                // bat  'pip install -r requirements.txt'
+                bat 'pytest -v'
                 bat 'python src/calculate_area.py'
             }
         }
