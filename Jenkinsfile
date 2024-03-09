@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment{
+        PYTHONPATH='src'
+    }
+
     stages {
         stage('Build') {
             steps {
