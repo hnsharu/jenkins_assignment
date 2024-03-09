@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'cloning..'
+                bat 'git status'
             }
         }
         stage('Test') {
