@@ -8,8 +8,8 @@ pipeline {
             steps {
                 echo 'building'
                 // bat  'pip install -r requirements.txt'
-                bat 'pytest -v'
-                bat 'python src/calculate_area.py'
+                // bat 'pytest -v'
+                // bat 'python src/calculate_area.py'
             }
         }
         stage('Test') {
