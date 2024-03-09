@@ -5,8 +5,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'cloning..'
-                bat 'rd /s /q jenkins_assignment'
-                bat 'git clone https://github.com/hnsharu/jenkins_assignment.git'
             }
         }
         stage('Test') {
