@@ -8,6 +8,7 @@ pipeline {
         }
         stage('build with container') {
             steps {
+                bat 'echo running app'
                 bat 'docker run --rm pythonenv python3 src/calculate_area.py'
             }
         }
