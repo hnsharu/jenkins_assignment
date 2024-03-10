@@ -6,9 +6,15 @@ pipeline {
                 bat 'docker build -t pythonenv .'
             }
         }
-        stage('build') {
+        stage('build with container') {
             steps {
-                bat 'docker run --rm pythonenv python3 --version'
+                bat 'docker run --rm pythonenv python3 src/calculate_area.py'
+            }
+        }
+
+        stage('testing in container') {
+            steps {
+                bat 'docker run --rm pythonenv pytest'
             }
         }
     }
