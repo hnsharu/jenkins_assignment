@@ -18,5 +18,11 @@ pipeline {
                 bat 'docker run --rm pythonenv pytest'
             }
         }
+
+        stage('cleaing images') {
+            steps {
+                bat 'docker image prune -f'
+            }
+        }
     }
 }
