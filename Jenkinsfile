@@ -1,26 +1,14 @@
 pipeline {
-    agent{
-        dockerfile true
-    }
-
+    agent any
     stages {
-        stage('Build') {
+        stage('building image') {
             steps {
-                echo 'building'
-                // bat  'pip install -r requirements.txt'
-                // bat 'pytest -v'
-                // bat 'python src/calculate_area.py'
+                bat 'docker build -t pythonenv .'
             }
         }
-        stage('Test') {
+        stage('build') {
             steps {
-                echo 'Testing..'
-                bat 'pytest'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                bat 'docker run --rm pythonenv python3 --version'
             }
         }
     }

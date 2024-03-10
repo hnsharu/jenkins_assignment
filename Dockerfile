@@ -1,15 +1,9 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8-slim
+FROM ubuntu
 
-# Set the working directory in the container
-WORKDIR /app
+RUN apt update && apt install -y python3 python3-pip
 
-# Install any needed packages specified in requirements.txt
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of your application's source code from your host to your image filesystem.
+WORKDIR /project
 COPY . .
-
-# Define any environment variables, expose ports, etc., as needed
 ENV PYTHONPATH='src'
+RUN pip3 install -r requirements.txt
+
