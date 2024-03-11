@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'python3 --version'
+                sh 'python3 src/calculate_area.py'
             }
         }
     }
