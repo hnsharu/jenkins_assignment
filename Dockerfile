@@ -18,7 +18,7 @@ COPY . /project
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 RUN pip3 install --upgrade pip && pip3 install -r /project/requirements.txt
-
+RUn chown -R jenkins:jenkins /project
 ENV PYTHONPATH='src'
 USER jenkins
 
