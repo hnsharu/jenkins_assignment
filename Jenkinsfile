@@ -1,28 +1,23 @@
 pipeline {
-    agent any
+    agent {
+        docker{image: 'sharu43/pythonenv'}
+    }
     stages {
-        stage('building image') {
+        
+        stage('build') {
             steps {
-                bat 'docker build -t pythonenv .'
-            }
-        }
-        stage('build with container') {
-            steps {
-                bat 'echo running app'
-                bat 'docker run --rm pythonenv python3 src/calculate_area.py'
+                sh 'echo building'
+                sh 'Python3 src/calculate_area.py'
             }
         }
 
-        stage('testing in container') {
+        stage('testing') {
             steps {
-                bat 'docker run --rm pythonenv pytest'
+                sh 'echo testing'
+                sh 'pytest'
             }
         }
 
-        stage('cleaing images') {
-            steps {
-                bat 'docker image prune -f'
-            }
-        }
+        
     }
 }
