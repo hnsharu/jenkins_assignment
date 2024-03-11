@@ -1,23 +1,12 @@
 pipeline {
     agent {
-        docker{ image 'sharu43/pythonenv'}
+        docker { image 'sharu43/pythonenv' }
     }
     stages {
-        
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'echo building'
-                sh 'Python3 src/calculate_area.py'
+                sh 'python3 --version'
             }
         }
-
-        stage('testing') {
-            steps {
-                sh 'echo testing'
-                sh 'pytest'
-            }
-        }
-
-        
     }
 }
