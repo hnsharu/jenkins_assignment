@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker{image: 'sharu43/pythonenv'}
+        docker{ image 'sharu43/pythonenv'}
     }
     stages {
         
